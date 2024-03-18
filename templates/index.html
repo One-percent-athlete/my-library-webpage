@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Library</title>
+  </head>
+  <body>
+    <h1 style="font-size: xx-large;">My Library</h1>
+    {% if not books %}
+      <p>Library is empty</p>
+    {% else %}
+    <ul>
+      {% for b in books %}
+        <li style="font-size: 18px; font-family: 'Times New Roman', Times, serif; font-weight: 100;">
+          <h3><a href="{{url_for('delete', id=b.id)}}">DELETE</a>{{b.title}} - {{b.author}} - {{b.rating}}/10 <a href="{{url_for('edit', num=b.id)}}">Edit Rating</a>
+          </h3>
+        </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <a href="{{url_for('add')}}">Add New Book</a>
+  </body>
+</html>
